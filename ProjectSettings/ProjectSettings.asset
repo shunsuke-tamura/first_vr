@@ -135,9 +135,7 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 0.1
-  preloadedAssets:
-  - {fileID: 11400000, guid: d5fa6343727b08a43b02a980b0b3a20f, type: 2}
-  - {fileID: -8381469549229585539, guid: 4c61dc8209e067f49b9960b54a012985, type: 2}
+  preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -156,6 +154,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.DefaultCompany.first_vr
+    Standalone: com.DefaultCompany.first-vr
   buildNumber:
     Standalone: 0
     iPhone: 0
