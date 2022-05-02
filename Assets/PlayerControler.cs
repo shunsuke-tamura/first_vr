@@ -7,6 +7,7 @@ public class PlayerControler : MonoBehaviour
     public float speed;
     private Vector3 movement;
     private CharacterController controller;
+    private Vector3 startPos;
 
     public GameObject cameraC;
     private Vector3 moveDir = Vector3.zero;
@@ -17,6 +18,8 @@ public class PlayerControler : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        startPos = transform.position;
+        Debug.Log(startPos);
     }
 
     void Update()
@@ -31,5 +34,12 @@ public class PlayerControler : MonoBehaviour
         moveDir.y -= gravity * Time.deltaTime;
 
         controller.Move(moveDir * Time.deltaTime * speed);
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        controller.enabled = false;
+        transform.position = startPos;
+        controller.enabled = true;
     }
 }
