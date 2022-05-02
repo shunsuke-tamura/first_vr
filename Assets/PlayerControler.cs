@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerControler : MonoBehaviour
 {
     public float speed;
-    private Vector3 movement;
     private CharacterController controller;
     private Vector3 startPos;
 
@@ -20,7 +19,6 @@ public class PlayerControler : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         startPos = transform.position;
-        Debug.Log(startPos);
     }
 
     void Update()
@@ -30,9 +28,8 @@ public class PlayerControler : MonoBehaviour
 
         moveH = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick).x;
         moveV = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick).y;
-        movement = new Vector3(moveH, 0, moveV);
 
-        Vector3 desiredMove = cameraC.transform.forward * movement.z + cameraC.transform.right * movement.x;
+        Vector3 desiredMove = cameraC.transform.forward * moveV + cameraC.transform.right * moveH;
         moveDir.x = desiredMove.x * 3f;
         moveDir.z = desiredMove.z * 3f;
         moveDir.y -= gravity * Time.deltaTime;
