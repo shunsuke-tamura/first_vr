@@ -14,6 +14,7 @@ public class PlayerControler : MonoBehaviour
     private float gravity = 9.8f;
     private float moveH;
     private float moveV;
+    private float rotateY;
 
     void Start()
     {
@@ -24,7 +25,10 @@ public class PlayerControler : MonoBehaviour
 
     void Update()
     {
-        moveH = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick).x;
+        rotateY = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick).x;
+        transform.rotation = transform.rotation * Quaternion.Euler(0, rotateY, 0);
+
+        moveH = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick).x;
         moveV = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick).y;
         movement = new Vector3(moveH, 0, moveV);
 
@@ -40,6 +44,7 @@ public class PlayerControler : MonoBehaviour
     {
         controller.enabled = false;
         transform.position = startPos;
+        transform.rotation = Quaternion.identity;
         controller.enabled = true;
     }
 }
